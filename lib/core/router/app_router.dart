@@ -163,6 +163,7 @@ class ScaffoldWithNavBar extends StatelessWidget {
 }
 
 // Placeholder screens (to be implemented)
+// Placeholder screens for other modules (to be implemented)
 class AnalyticsScreen extends StatelessWidget {
   const AnalyticsScreen({super.key});
 
@@ -170,7 +171,24 @@ class AnalyticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Analytics')),
-      body: const Center(child: Text('Analytics Screen')),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.analytics_outlined, size: 64, color: Colors.grey),
+            SizedBox(height: 16),
+            Text(
+              'Analytics Coming Soon',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'View spending insights and trends',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -182,7 +200,24 @@ class PaymentsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Payment Methods')),
-      body: const Center(child: Text('Payments Screen')),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.payment_outlined, size: 64, color: Colors.grey),
+            SizedBox(height: 16),
+            Text(
+              'Payment Methods Coming Soon',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Manage your payment methods',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => context.goNamed('addPaymentMethod'),
         child: const Icon(Icons.add),
@@ -198,45 +233,24 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: const Center(child: Text('Settings Screen')),
-    );
-  }
-}
-
-class AddSubscriptionScreen extends StatelessWidget {
-  const AddSubscriptionScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Add Subscription')),
-      body: const Center(child: Text('Add Subscription Form')),
-    );
-  }
-}
-
-class EditSubscriptionScreen extends StatelessWidget {
-  final String id;
-  const EditSubscriptionScreen({super.key, required this.id});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Edit Subscription')),
-      body: Center(child: Text('Edit Subscription: $id')),
-    );
-  }
-}
-
-class SubscriptionDetailScreen extends StatelessWidget {
-  final String id;
-  const SubscriptionDetailScreen({super.key, required this.id});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Subscription Details')),
-      body: Center(child: Text('Subscription Details: $id')),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.settings_outlined, size: 64, color: Colors.grey),
+            SizedBox(height: 16),
+            Text(
+              'Settings Coming Soon',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text(
+              'Configure app preferences',
+              style: TextStyle(color: Colors.grey),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -247,8 +261,28 @@ class AddPaymentMethodScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Add Payment Method')),
-      body: const Center(child: Text('Add Payment Method Form')),
+      appBar: AppBar(
+        title: const Text('Add Payment Method'),
+        leading: IconButton(
+          icon: const Icon(Icons.close),
+          onPressed: () => context.pop(),
+        ),
+      ),
+      body: const Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.credit_card_outlined, size: 64, color: Colors.grey),
+            SizedBox(height: 16),
+            Text(
+              'Payment Methods Module',
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 8),
+            Text('Coming soon...', style: TextStyle(color: Colors.grey)),
+          ],
+        ),
+      ),
     );
   }
 }

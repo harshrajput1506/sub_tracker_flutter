@@ -53,6 +53,9 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
   }
 
   void _showFilterBottomSheet() {
+    // Capture the bloc before opening the bottom sheet
+    final bloc = context.read<SubscriptionBloc>();
+
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -61,10 +64,8 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
           top: Radius.circular(AppRadius.large),
         ),
       ),
-      builder: (context) => BlocProvider.value(
-        value: context.read<SubscriptionBloc>(),
-        child: const FilterBottomSheet(),
-      ),
+      builder: (bottomSheetContext) =>
+          BlocProvider.value(value: bloc, child: const FilterBottomSheet()),
     );
   }
 
@@ -155,7 +156,7 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
                   : 'Add First Subscription',
               onAction: state.isFiltered
                   ? _clearFilters
-                  : () => context.goNamed('addSubscription'),
+                  : () => context.pushNamed('addSubscription'),
             );
           }
 
@@ -205,7 +206,7 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
                         return SubscriptionCard(
                           subscription: subscription,
                           onTap: () {
-                            context.goNamed(
+                            context.pushNamed(
                               'subscriptionDetail',
                               pathParameters: {'id': subscription.id},
                             );
@@ -239,7 +240,7 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
         },
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () => context.goNamed('addSubscription'),
+        onPressed: () => context.pushNamed('addSubscription'),
         icon: const Icon(Icons.add),
         label: const Text('Add'),
       ),
