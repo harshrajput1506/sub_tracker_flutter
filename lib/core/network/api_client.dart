@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:sub/core/constants/constants.dart';
 import 'package:sub/core/error/exception_handler.dart';
 import 'package:sub/core/error/failures.dart';
@@ -6,6 +7,7 @@ import 'package:sub/core/utils/logger.dart';
 import 'package:dartz/dartz.dart';
 
 /// API client for network requests
+@lazySingleton
 class ApiClient {
   final Dio _dio;
 
