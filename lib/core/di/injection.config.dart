@@ -26,6 +26,7 @@ import '../../data/repositories/currency_repository.dart' as _i893;
 import '../../data/repositories/payment_method_repository.dart' as _i1070;
 import '../../data/repositories/settings_repository.dart' as _i373;
 import '../../data/repositories/subscription_repository.dart' as _i167;
+import '../../features/subscriptions/bloc/subscription_bloc.dart' as _i648;
 import '../network/api_client.dart' as _i557;
 import 'injection.dart' as _i464;
 
@@ -75,6 +76,8 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i557.ApiClient>(),
               gh<_i979.Box<dynamic>>(instanceName: 'currencyBox'),
             ));
+    gh.factory<_i648.SubscriptionBloc>(
+        () => _i648.SubscriptionBloc(gh<_i167.SubscriptionRepository>()));
     gh.lazySingleton<_i373.SettingsRepository>(
         () => _i373.SettingsRepository(gh<_i246.SettingsLocalDataSource>()));
     gh.lazySingleton<_i893.CurrencyRepository>(

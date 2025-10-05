@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sub/features/subscriptions/screens/home_screen.dart';
+import 'package:sub/features/subscriptions/screens/add_subscription_screen.dart';
+import 'package:sub/features/subscriptions/screens/edit_subscription_screen.dart';
+import 'package:sub/features/subscriptions/screens/subscription_detail_screen.dart';
 
 /// App router configuration
 class AppRouter {
@@ -17,9 +21,8 @@ class AppRouter {
           GoRoute(
             path: '/',
             name: 'home',
-            pageBuilder: (context, state) => NoTransitionPage(
-              child: _lazyLoadScreen(() => const HomeScreen()),
-            ),
+            pageBuilder: (context, state) =>
+                const NoTransitionPage(child: HomeScreen()),
           ),
 
           // Analytics Route
@@ -55,8 +58,7 @@ class AppRouter {
       GoRoute(
         path: '/subscription/add',
         name: 'addSubscription',
-        builder: (context, state) =>
-            _lazyLoadScreen(() => const AddSubscriptionScreen()),
+        builder: (context, state) => const AddSubscriptionScreen(),
       ),
 
       // Edit Subscription Route
@@ -65,7 +67,7 @@ class AppRouter {
         name: 'editSubscription',
         builder: (context, state) {
           final id = state.pathParameters['id']!;
-          return _lazyLoadScreen(() => EditSubscriptionScreen(id: id));
+          return EditSubscriptionScreen(id: id);
         },
       ),
 
@@ -75,7 +77,7 @@ class AppRouter {
         name: 'subscriptionDetail',
         builder: (context, state) {
           final id = state.pathParameters['id']!;
-          return _lazyLoadScreen(() => SubscriptionDetailScreen(id: id));
+          return SubscriptionDetailScreen(id: id);
         },
       ),
 
@@ -161,22 +163,6 @@ class ScaffoldWithNavBar extends StatelessWidget {
 }
 
 // Placeholder screens (to be implemented)
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text('Subscriptions')),
-      body: const Center(child: Text('Home Screen')),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => context.goNamed('addSubscription'),
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
-
 class AnalyticsScreen extends StatelessWidget {
   const AnalyticsScreen({super.key});
 
